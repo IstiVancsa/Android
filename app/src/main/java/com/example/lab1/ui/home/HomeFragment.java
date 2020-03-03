@@ -23,47 +23,17 @@ import java.util.List;
 public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
+    private ListView listView;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         homeViewModel = ViewModelProviders.of(this).get(HomeViewModel.class);
         View root = inflater.inflate(R.layout.fragment_home, container, false);
 
-        List<HomeModel> mockList = new ArrayList<>();
-        mockList.add(new HomeModel(R.drawable.kurtos_kalacs, "kurtos1", "1"));
-        mockList.add(new HomeModel(R.drawable.kurtos_kalacs, "kurtos2", "2"));
-        mockList.add(new HomeModel(R.drawable.kurtos_kalacs, "kurtos3", "3"));
-        mockList.add(new HomeModel(R.drawable.kurtos_kalacs, "kurtos4", "4"));
-        mockList.add(new HomeModel(R.drawable.kurtos_kalacs, "kurtos5", "5"));
-        //homeViewModel.HomeModelList = new ArrayAdapter<List<HomeModel>>(this, R.layout.fragment_home, mockList)
+        listView = (ListView)root.findViewById((R.id.kurtosListView));
 
-        final TextView kurtosName = root.findViewById(R.id.kurtosName);
-        final TextView kurtosPrice = root.findViewById(R.id.kurtosPrice);
-        final ImageView kurtosImage = root.findViewById(R.id.kurtosImage);
-        final ListView kurtosListView = root.findViewById(R.id.kurtosList);
-        kurtosImage.setBackgroundResource(R.drawable.kurtos_kalacs);
-
-
-        homeViewModel.getName().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(String s) {
-                kurtosName.setText(s);
-            }
-        });
-
-        homeViewModel.getPrice().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(String s) {
-                kurtosPrice.setText(s);
-            }
-        });
-
-        homeViewModel.getImagePath().observe(this, new Observer<Integer>() {
-            @Override
-            public void onChanged(Integer s) {
-                kurtosImage.setBackgroundResource(s);
-            }
-        });
+        ProductListAdapter adapter = new ProductListAdapter(getActivity(), R.layout.home_list_layout, homeViewModel.getHomeModelList());
+        listView.setAdapter(adapter);
         return root;
     }
 }

@@ -14,11 +14,11 @@ import java.util.List;
 
 public class HomeViewModel extends ViewModel {
 
-    public ArrayAdapter<List<HomeModel>> HomeModelList;
+    private  ArrayList<Product> kurtosList;
 
-    public MutableLiveData<Integer> ImagePath;
-    public MutableLiveData<String> KurtosName;
-    public MutableLiveData<String> KurtosPrice;
+    private MutableLiveData<Integer> ImagePath;
+    private MutableLiveData<String> KurtosName;
+    private MutableLiveData<String> KurtosPrice;
 
     public HomeViewModel() {
         ImagePath = new MutableLiveData<>();
@@ -27,6 +27,23 @@ public class HomeViewModel extends ViewModel {
         KurtosName.setValue("Test Kurtos");
         KurtosPrice.setValue("2 lei");
         ImagePath.setValue(R.drawable.kurtos_kalacs);
+
+        this.kurtosList = new ArrayList<>();
+        kurtosList.add(new Product("test price1", "test product1", "description1"));
+        kurtosList.add(new Product("test price2", "test product2", "description2"));
+        kurtosList.add(new Product("test price3", "test product3", "description3"));
+        kurtosList.add(new Product("test price4", "test product4", "description4"));
+        kurtosList.add(new Product("test price5", "test product5", "description5"));
+        kurtosList.add(new Product("test price6", "test product6", "description6"));
+        kurtosList.add(new Product("test price7", "test product7", "description7"));
+        kurtosList.add(new Product("test price8", "test product8", "description8"));
+        kurtosList.add(new Product("test price9", "test product9", "description9"));
+        kurtosList.add(new Product("test price10", "test product10", "description10"));
+        kurtosList.add(new Product("test price11", "test product11", "description11"));
+        kurtosList.add(new Product("test price12", "test product12", "description12"));
+        kurtosList.add(new Product("test price13", "test product13", "description13"));
+        kurtosList.add(new Product("test price14", "test product14", "description14"));
+        kurtosList.add(new Product("test price15", "test product15", "description15"));
     }
 
 
@@ -42,8 +59,8 @@ public class HomeViewModel extends ViewModel {
         return ImagePath;
     }
 
-    public ArrayAdapter<List<HomeModel>> getHomeModelList()
+    public ArrayList<Product> getHomeModelList()
     {
-        return HomeModelList;
+        return kurtosList;
     }
 }
