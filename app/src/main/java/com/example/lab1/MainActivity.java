@@ -5,6 +5,7 @@ import android.os.Bundle;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
+import android.util.Log;
 import android.view.View;
 
 import androidx.navigation.NavController;
@@ -51,6 +52,43 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+        Log.d("OnCreate", " OnCreate was executed!");
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.d("onStart", " onStart was executed!");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d("onResume", " onResume was executed!");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d("onPause", " onPause was executed!");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d("onStop", " onStop was executed!");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d("onDestroy", " onDestroy was executed!");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.d("onRestart", " onRestart was executed!");
     }
 
     @Override
@@ -66,4 +104,6 @@ public class MainActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
+
+
 }

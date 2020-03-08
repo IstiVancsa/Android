@@ -6,10 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
     <TextView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:gravity="center"
-    android:text="I am a portrait mode layout"/>
+        android:text="I am a landscape mode layout"/>
     <ListView
         android:id="@+id/kurtosListView"
         android:layout_width="match_parent"
