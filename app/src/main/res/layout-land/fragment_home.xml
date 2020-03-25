@@ -9,7 +9,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="I am a landscape mode layout"/>
+        android:text="I am a landscape mode layout"
+        android:typeface="serif"/>
+    <Button
+        android:id="@+id/openPopUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Open Pop Up"/>
     <ListView
         android:id="@+id/kurtosListView"
         android:layout_width="match_parent"

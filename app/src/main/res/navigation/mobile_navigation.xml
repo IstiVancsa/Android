@@ -45,4 +45,9 @@
         android:name="com.example.lab1.ui.About.Nav_About"
         android:label="About"
         tools:layout="@layout/nav__about_fragment"/>
+    <fragment
+        android:id="@+id/nav_settings"
+        android:name="com.example.lab1.ui.Settings.Nav_Settings"
+        android:label="Settings"
+        tools:layout="@layout/nav_settings_fragment"/>
 </navigation>

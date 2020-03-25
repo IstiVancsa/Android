@@ -1,6 +1,7 @@
 package com.example.lab1.ui.home;
 
 import android.app.Application;
+import android.content.Context;
 import android.widget.ArrayAdapter;
 
 import androidx.lifecycle.LiveData;
@@ -9,18 +10,26 @@ import androidx.lifecycle.ViewModel;
 
 import com.example.lab1.R;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+
+import static android.content.Context.MODE_PRIVATE;
 
 public class HomeViewModel extends ViewModel {
 
     private  ArrayList<Product> kurtosList;
+    public static final String FILE_NAME = "kurtos.txt";
 
     private MutableLiveData<Integer> ImagePath;
     private MutableLiveData<String> KurtosName;
     private MutableLiveData<String> KurtosPrice;
 
-    public HomeViewModel() {
+    public HomeViewModel(Context context) {
         ImagePath = new MutableLiveData<>();
         KurtosName = new MutableLiveData<>();
         KurtosPrice = new MutableLiveData<>();
@@ -29,6 +38,27 @@ public class HomeViewModel extends ViewModel {
         ImagePath.setValue(R.drawable.kurtos_kalacs);
 
         this.kurtosList = new ArrayList<>();
+
+        FileInputStream fis = null;
+        try{
+            fis = context.openFileInput(FILE_NAME);
+            InputStreamReader isr = new InputStreamReader(fis);
+            BufferedReader br = new BufferedReader(isr);
+            StringBuilder sb = new StringBuilder();
+
+            String text;
+
+            while((text = br.readLine()) != null){
+                sb.append(text).append("\n");
+            }
+        }
+        catch (FileNotFoundException e){
+            e.printStackTrace();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         kurtosList.add(new Product("test price1", "test product1", "description1"));
         kurtosList.add(new Product("test price2", "test product2", "description2"));
         kurtosList.add(new Product("test price3", "test product3", "description3"));

@@ -46,8 +46,6 @@ final int SMS_Permission_Code = 1;
         }
     }
 
-
-
     public boolean checkPermission(String permission){
         int check = ContextCompat.checkSelfPermission(this, permission);
         return check == PackageManager.PERMISSION_GRANTED;
