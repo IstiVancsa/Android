@@ -38,7 +38,7 @@ public class AddNewProduct_PopUp extends AppCompatDialogFragment {
 
                     }
                 })
-                .setPositiveButton("Send", new DialogInterface.OnClickListener() {
+                .setPositiveButton("Add Product", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         EditText name = view.findViewById(R.id.name);

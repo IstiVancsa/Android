@@ -25,22 +25,30 @@ import java.io.IOException;
 
 import static android.content.Context.MODE_PRIVATE;
 
-public class HomeFragment extends Fragment implements AddNewProduct_PopUp.IAddNewProductListener {
+public class HomeFragment extends Fragment{
 
     private HomeViewModel homeViewModel;
     private ListView listView;
     private Button openPopUpButton;
-    ProductListAdapter adapter = new ProductListAdapter(getActivity(), R.layout.home_list_layout, homeViewModel.getHomeModelList());
+    ProductListAdapter adapter;
+    public HomeFragment(){
 
+    }
+    public HomeFragment(String name, String price, String description){
+        Product product = new Product(price, name, description);
+        adapter.add(product);
+    }
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        homeViewModel = ViewModelProviders.of(this, new HomeViewModelFactory(getContext())).get(HomeViewModel.class);
+        homeViewModel = ViewModelProviders.of(this, new HomeViewModelFactory(getContext(), getActivity())).get(HomeViewModel.class);
+        adapter = new ProductListAdapter(getActivity(), R.layout.home_list_layout, homeViewModel.getHomeModelList());
         View root = inflater.inflate(R.layout.fragment_home, container, false);
 
         listView = root.findViewById((R.id.kurtosListView));
         openPopUpButton = root.findViewById(R.id.openPopUp);
 
         listView.setAdapter(adapter);
+        homeViewModel.ReadProducts();
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -64,34 +72,7 @@ public class HomeFragment extends Fragment implements AddNewProduct_PopUp.IAddNe
     }
 
     public void OpenDialog() {
-        MessagePopUp popUp = new MessagePopUp();
+        AddNewProduct_PopUp popUp = new AddNewProduct_PopUp();
         popUp.show(getActivity().getSupportFragmentManager(), "Add new product");
-    }
-
-    @Override
-    public void applyTexts(String name, String price, String description) {
-        Product product = new Product(price, name, description);
-        adapter.add(product);
-
-        FileOutputStream fos = null;
-        try {
-            fos = getContext().openFileOutput(homeViewModel.FILE_NAME, MODE_PRIVATE);
-            fos.write(product.getName().getBytes());
-            fos.write(product.getPrice().getBytes());
-            fos.write(product.getDescription().getBytes());
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }finally {
-            if(fos != null){
-                try{
-                    fos.close();
-                }
-                catch (IOException e){
-                    e.printStackTrace();
-                }
-            }
-        }
     }
 }

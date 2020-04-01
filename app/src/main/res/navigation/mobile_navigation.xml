@@ -50,4 +50,14 @@
         android:name="com.example.lab1.ui.Settings.Nav_Settings"
         android:label="Settings"
         tools:layout="@layout/nav_settings_fragment"/>
+    <fragment
+        android:id="@+id/nav_sensors"
+        android:name="com.example.lab1.ui.Sensor.Nav_Sensor"
+        android:label="Sensors"
+        tools:layout="@layout/nav__sensor_fragment"/>
+    <fragment
+        android:id="@+id/nav_location"
+        android:name="com.example.lab1.ui.Location.Nav_Location"
+        android:label="Locations"
+        tools:layout="@layout/nav__location_fragment"/>
 </navigation>

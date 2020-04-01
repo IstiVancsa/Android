@@ -1,24 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.Sensor.Nav_Sensor">
 
     <Button
-        android:id="@+id/GoToSettingsButton"
+        android:id="@+id/GoToSensorsButton"
         android:layout_width="226dp"
         android:layout_height="164dp"
         android:layout_marginStart="104dp"
         android:layout_marginTop="238dp"
         android:layout_marginEnd="81dp"
         android:layout_marginBottom="329dp"
-        android:text="Go to settings page"
+        android:text="Go to sensors page"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-</LinearLayout>
+</FrameLayout>
