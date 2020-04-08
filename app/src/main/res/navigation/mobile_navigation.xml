@@ -60,4 +60,9 @@
         android:name="com.example.lab1.ui.Location.Nav_Location"
         android:label="Locations"
         tools:layout="@layout/nav__location_fragment"/>
+    <fragment
+        android:id="@+id/nav_camera"
+        android:name="com.example.lab1.ui.Camera.Nav_Camera"
+        android:label="Camera"
+        tools:layout="@layout/fragment_nav__camera"/>
 </navigation>

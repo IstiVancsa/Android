@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity implements AddNewProduct_Pop
                 R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow,
                 R.id.nav_tools, R.id.nav_share, R.id.nav_send,
                 R.id.nav_about, R.id.nav_settings, R.id.nav_sensors,
-                R.id.nav_location)
+                R.id.nav_location, R.id.nav_camera)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
